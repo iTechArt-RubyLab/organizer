@@ -1,0 +1,16 @@
+require: rubocop-rails
+
+Documentation:
+  Enabled: false
+
+AllCops:
+  Exclude:
+    - db/**/*
+    - bin/**/*
+    - config/**/*
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 20
