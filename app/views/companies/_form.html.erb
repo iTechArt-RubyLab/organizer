@@ -1,9 +1,9 @@
-<%= simple_form_for @company do |service_form| %>
+<%= simple_form_for @company do |company_form| %>
   <div class="form-group text-center">
-    <%= service_form.input :name %>
-    <%= service_form.input :address %>
-    <%= service_form.input :phone %>
-    <%= service_form.input :description %>
-    <%= service_form.button :submit %>
+    <%= company_form.input :name %>
+    <%= company_form.input :address %>
+    <%= company_form.input :phone %>
+    <%= company_form.input :description %>
+    <%= company_form.button :submit %>
   </div>
 <% end %>
