@@ -15,7 +15,7 @@ class ServicesController < ApplicationController
   def create
     @service = @company.services.new(service_params)
     if @service.save
-      redirect_to company_services_url
+      redirect_to company_services_path(@company)
     else
       render :new, status: :unprocessable_entity
     end
