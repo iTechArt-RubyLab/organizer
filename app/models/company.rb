@@ -1,5 +1,5 @@
 class Company < ApplicationRecord
-  # has_many :services, dependent: :destroy
+  has_many :services, dependent: :destroy
 
   validates :name, presence: true, length: { minimum: 2, maximum: 50 }
   validates :address, presence: true, length: { maximum: 255 }
