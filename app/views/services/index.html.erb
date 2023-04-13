@@ -1,0 +1,28 @@
+<h1>Services</h1>
+
+<table>
+  <thread>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Duration</th>
+      <th>Price</th>
+      <th colspan="2"></th>
+    </tr>
+  </thread>
+
+  <tbody>
+    <% @services.each do |service| %>
+      <tr>
+        <td><%= service.name %></td>
+        <td><%= service.description %></td>
+        <td><%= service.duration %></td>
+        <td><%= service.price %></td>
+        <td><%= link_to 'Edit', edit_company_service_path(@company, service) %></td>
+        <td><%= link_to 'Destroy', [@company, service], data: { turbo_method: :delete, confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Service', new_company_service_path(@company) %>

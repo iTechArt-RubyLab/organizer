@@ -47,6 +47,9 @@ gem 'bootsnap', require: false
 gem 'bootstrap', '~> 5.2.2'
 gem 'jquery-rails'
 
+# Phone validator
+gem 'phonelib', '~> 0.7.3'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
