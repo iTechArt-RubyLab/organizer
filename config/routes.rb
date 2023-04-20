@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   resources :companies, only: %i[show edit update] do
     resources :services
   end
+
+  resources :bookings
 end
