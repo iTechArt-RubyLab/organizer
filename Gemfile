@@ -50,6 +50,9 @@ gem 'jquery-rails'
 # Phone validator
 gem 'phonelib', '~> 0.7.3'
 
+# Datetime validator
+gem 'validates_timeliness'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

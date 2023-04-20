@@ -14,9 +14,11 @@ class BookingsController < ApplicationController
   end
 
   def create
-
     @booking = current_user.bookings.new(booking_params)
+    @booking.end_at = @booking.start_at + @booking.total_duration * 60 - 1
+
     if @booking.save
+      end_at_set
       total_price_set
       redirect_to bookings_path
     else
@@ -41,11 +43,16 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:start_at, :end_at, :total_price, :user_id, :service_id)
+    params.require(:booking).permit(:start_at, :end_at, :total_price, :total_duration, :user_id, :service_id)
   end
 
   def total_price_set
-    @booking.total_price = (@booking.end_at - @booking.start_at) / 60 / @booking.service.duration * @booking.service.price
+    @booking.total_price = (@booking.total_duration * 1.0 / @booking.service.duration).ceil * @booking.service.price
+    @booking.save!
+  end
+
+  def end_at_set
+    @booking.end_at = @booking.start_at + @booking.total_duration * 60 - 1
     @booking.save!
   end
 

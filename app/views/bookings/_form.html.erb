@@ -1,8 +1,9 @@
 <%= simple_form_for @booking  do |booking_form| %>
   <div class="form-group text-center">
     <%= booking_form.association :service %>
-    <%= booking_form.input :start_at, start_year: 2023, minute_step: 15, start_hour: 16, end_hour: 23 %><br>
-    <%= booking_form.input :end_at, start_year: 2023, minute_step: 15, start_hour: 16, end_hour: 24 %>
+    <%= booking_form.input :start_at, start_year: 2023, minute_step: 15, start_hour: 16, end_hour: 24 %><br>
+    <%#= booking_form.input :end_at, start_year: 2023, minute_step: 15, start_hour: 16, end_hour: 24 %>
+    <%= booking_form.input :total_duration %>
     <%= booking_form.button :submit %>
   </div>
 <% end %>
