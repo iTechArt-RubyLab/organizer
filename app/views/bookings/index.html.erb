@@ -7,6 +7,7 @@
       <th>User</th>
       <th>Start at</th>
       <th>End at</th>
+      <th>Duration(min.)</th>
       <th>Price</th>
       <th colspan="2"></th>
     </tr>
@@ -19,9 +20,9 @@
       <td><%= current_user.name %></td>
       <td><%= booking.start_at %></td>
       <td><%= booking.end_at %></td>
+      <td><%= booking.total_duration %></td>
       <td><%= booking.total_price %></td>
-<!--      <td><%#= link_to 'Edit', edit_company_service_path(@company, service) %></td>-->
-<!--      <td><%#= link_to 'Destroy', [@company, service], data: { turbo_method: :delete, confirm: 'Are you sure?' } %></td>-->
+      <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
     </tr>
   <% end %>
   </tbody>
