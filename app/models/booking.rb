@@ -13,20 +13,27 @@ class Booking < ApplicationRecord
   validate :check_the_possibility_to_book, on: :create
   validate :working_hours
 
+  before_validation :set_end_date, on: :create
+  before_validation :total_duration_set, :total_price_set
   after_create :booking_notification
 
-
   def remind_at
-    start_at - 9.minutes
+    start_at - 1.hour
   end
 
   private
 
-  def booking_notification
-    BookingNotificationJob.perform_async(id)
+  def set_end_date
+    self.end_at -= 1
   end
 
+  def total_price_set
+    self.total_price = (total_duration / service.duration) * service.price
+  end
 
+  def total_duration_set
+    self.total_duration = ((self.end_at - start_at) / 60).ceil
+  end
 
   def end_date_after_start_date
     return if end_at.blank? || start_at.blank?
@@ -42,20 +49,16 @@ class Booking < ApplicationRecord
   end
 
   def booking_time
-    total_d = ((end_at - start_at) / 60).ceil
-    if total_d < 60 && service.name != 'Message chair'
-      errors.add(:end_at, 'The minimum booking time is 1 hour.')
-    elsif total_d < 15 && service.name == 'Message chair'
-      errors.add(:end_at, 'The minimum booking time is 15 minutes.')
-    end
+    return unless total_duration < service.duration
+
+    errors.add(:end_at, "The minimum booking time is #{service.duration} minutes.")
   end
 
   def check_the_possibility_to_book
-    if service_id == 1 && Booking.with_service(1).reservations_overlap(end_at, start_at).count >= 5 ||
-       service_id == 2 && Booking.with_service(2).reservations_overlap(end_at, start_at).count >= 8 ||
-       service_id != 1 && service_id != 2 && Booking.with_service(service_id).reservations_overlap(end_at, start_at).any?
-      errors.add(:start_at, 'This time is unavailable. Choose another.')
-    end
+    id_service = Service.find_by(name: service.name).id
+    return unless Booking.with_service(id_service).reservations_overlap(end_at, start_at).count >= service.quantity
+
+    errors.add(:start_at, 'This time is unavailable. Choose another.')
   end
 
   def working_hours
@@ -68,7 +71,7 @@ class Booking < ApplicationRecord
     end
 
     unless ((start_at >= start_day && start_at <= close_hour) &&
-            (end_at <= close_hour + 1.second && end_at >= start_day)) ||
+           (end_at <= close_hour + 1.second && end_at >= start_day)) ||
            (start_at >= open_hour && start_at <= end_day) &&
            (end_at <= end_day + 2.hours + 1.second && end_at >= open_hour)
       errors.add(:end_at, 'We work from 16 pm to 2 am')
