@@ -17,7 +17,7 @@
   <% @bookings.each do |booking| %>
     <tr>
       <td><%= booking.service.name %></td>
-      <td><%= current_user.name %></td>
+      <td><%= booking.user.try(:name) %></td>
       <td><%= booking.start_at %></td>
       <td><%= booking.end_at %></td>
       <td><%= booking.total_duration %></td>

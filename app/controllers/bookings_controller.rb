@@ -53,4 +53,6 @@ class BookingsController < ApplicationController
     @booking.total_duration = ((@booking.end_at - @booking.start_at) / 60).ceil
     @booking.save!
   end
+
+
 end

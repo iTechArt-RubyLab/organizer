@@ -13,7 +13,20 @@ class Booking < ApplicationRecord
   validate :check_the_possibility_to_book, on: :create
   validate :working_hours
 
+  after_create :booking_notification
+
+
+  def remind_at
+    start_at - 9.minutes
+  end
+
   private
+
+  def booking_notification
+    BookingNotificationJob.perform_async(id)
+  end
+
+
 
   def end_date_after_start_date
     return if end_at.blank? || start_at.blank?
