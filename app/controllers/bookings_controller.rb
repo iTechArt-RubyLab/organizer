@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
   before_action :booking_set, only: %i[show edit update]
+  before_action :authorize_booking
 
   def index
     @bookings = current_user.bookings.all
@@ -41,5 +42,8 @@ class BookingsController < ApplicationController
     params.require(:booking).permit(:start_at, :end_at, :total_price, :total_duration, :user_id, :service_id)
   end
 
+  def authorize_booking
+    authorize @booking || Booking
+  end
 
 end

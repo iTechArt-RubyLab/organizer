@@ -1,5 +1,7 @@
 class CompaniesController < ApplicationController
+  before_action :authenticate_user!, except: :show
   before_action :company_find, only: %i[show edit update]
+  before_action :authorize_company
 
   def show; end
 
@@ -21,5 +23,9 @@ class CompaniesController < ApplicationController
 
   def company_find
     @company = Company.find(params[:id])
+  end
+
+  def authorize_company
+    authorize @company
   end
 end
