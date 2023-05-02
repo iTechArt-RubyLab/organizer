@@ -19,14 +19,10 @@
         <td><%= service.duration %></td>
         <td><%= service.price %></td>
         <td><%= link_to "Book time", new_booking_path %></td>
-        <% if current_user.admin? %>
-          <td><%= link_to 'Edit', edit_company_service_path(@company, service) %></td>
-        <% end %>
+        <td><%= link_to 'Edit', edit_company_service_path(@company, service) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<% if current_user.admin? %>
-  <%= link_to 'New Service', new_company_service_path(@company) %>
-<% end %>
+<%= link_to 'New Service', new_company_service_path(@company) %>

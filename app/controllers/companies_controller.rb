@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+  before_action :authenticate_user!, except: :show
   before_action :company_find, only: %i[show edit update]
   before_action :authorize_company
 
