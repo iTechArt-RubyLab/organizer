@@ -10,7 +10,8 @@ class Booking < ApplicationRecord
   validate :end_date_after_start_date
   validate :valid_start_date
   validate :booking_time
-  validate :check_the_possibility_to_book
+  validate :check_the_possibility_to_book, on: :create
+  validate :check_the_possibility_to_update_book, on: :update
   validate :working_hours
 
   before_validation :set_end_date, on: :create
@@ -22,6 +23,10 @@ class Booking < ApplicationRecord
   end
 
   private
+
+  def booking_notification
+    BookingNotificationJob.perform_async(id)
+  end
 
   def set_end_date
     self.end_at -= 1
@@ -57,6 +62,14 @@ class Booking < ApplicationRecord
   def check_the_possibility_to_book
     id_service = Service.find_by(name: service.name).id
     return unless Booking.with_service(id_service).reservations_overlap(end_at, start_at).count >= service.quantity
+
+    errors.add(:start_at, 'This time is unavailable. Choose another.')
+  end
+
+  def check_the_possibility_to_update_book
+    id_service = Service.find_by(name: service.name).id
+    return unless Booking.with_service(id_service).reservations_overlap(end_at, start_at)
+                         .where.not(id:).count >= service.quantity
 
     errors.add(:start_at, 'This time is unavailable. Choose another.')
   end
