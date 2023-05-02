@@ -19,11 +19,14 @@
         <td><%= service.duration %></td>
         <td><%= service.price %></td>
         <td><%= link_to "Book time", new_booking_path %></td>
-        <td><%= link_to 'Edit', edit_company_service_path(@company, service) %></td>
-        <td><%= link_to 'Destroy', [@company, service], data: { turbo_method: :delete, confirm: 'Are you sure?' } %></td>
+        <% if current_user.admin? %>
+          <td><%= link_to 'Edit', edit_company_service_path(@company, service) %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to 'New Service', new_company_service_path(@company) %>
+<% if current_user.admin? %>
+  <%= link_to 'New Service', new_company_service_path(@company) %>
+<% end %>

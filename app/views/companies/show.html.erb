@@ -3,5 +3,9 @@
 <%= @company.phone %>
 <%= @company.description%>
 
-<%= link_to "Edit", edit_company_path(@company) %>
-<%= link_to "Services", company_services_path(@company) %>
+<% if current_user.admin? %>
+  <%= link_to "Edit", edit_company_path(@company) %>
+  <%= link_to "Services", company_services_path(@company) %>
+<% else %>
+  <%= link_to "Services", company_services_path(@company) %>
+<% end %>

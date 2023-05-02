@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable,
          :omniauthable, omniauth_providers: [:google_oauth2]
+
+  enum :role, { user: 0, admin: 1 }
+
   has_many :bookings
 
   def self.from_omniauth(auth)
