@@ -1,6 +1,8 @@
 class ServicesController < ApplicationController
+  before_action :authenticate_user!, except: %i[index show]
   before_action :company_find
-  before_action :service_find, only: %i[show edit update destroy]
+  before_action :service_find, only: %i[show edit update]
+  before_action :authorize_service
 
   def index
     @services = @company.services.all
@@ -45,4 +47,7 @@ class ServicesController < ApplicationController
     @service = @company.services.find(params[:id])
   end
 
+  def authorize_service
+    authorize @service || Service
+  end
 end
