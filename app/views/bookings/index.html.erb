@@ -1,0 +1,31 @@
+<h1>Bookings</h1>
+
+<table>
+  <thread>
+    <tr>
+      <th>Name</th>
+      <th>User</th>
+      <th>Start at</th>
+      <th>End at</th>
+      <th>Duration(min.)</th>
+      <th>Price</th>
+      <th colspan="2"></th>
+    </tr>
+  </thread>
+
+  <tbody>
+  <% @bookings.each do |booking| %>
+    <tr>
+      <td><%= booking.service.name %></td>
+      <td><%= current_user.name %></td>
+      <td><%= booking.start_at %></td>
+      <td><%= booking.end_at %></td>
+      <td><%= booking.total_duration %></td>
+      <td><%= booking.total_price %></td>
+      <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Booking', new_booking_path %>

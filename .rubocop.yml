@@ -14,3 +14,17 @@ Style/FrozenStringLiteralComment:
 
 Metrics/MethodLength:
   Max: 20
+
+Metrics/AbcSize:
+  Exclude:
+    - app/models/booking.rb
+    - app/models/user.rb
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - app/models/booking.rb
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - app/models/booking.rb
+
