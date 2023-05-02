@@ -18,6 +18,7 @@
         <td><%= service.description %></td>
         <td><%= service.duration %></td>
         <td><%= service.price %></td>
+        <td><%= link_to "Book time", new_booking_path %></td>
         <td><%= link_to 'Edit', edit_company_service_path(@company, service) %></td>
         <td><%= link_to 'Destroy', [@company, service], data: { turbo_method: :delete, confirm: 'Are you sure?' } %></td>
       </tr>

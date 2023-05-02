@@ -31,11 +31,6 @@ class ServicesController < ApplicationController
     end
   end
 
-  def destroy
-    @service.destroy
-    redirect_to company_services_path(@company)
-  end
-
   private
 
   def service_params
