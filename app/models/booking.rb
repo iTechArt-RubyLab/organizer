@@ -10,7 +10,7 @@ class Booking < ApplicationRecord
   validate :end_date_after_start_date
   validate :valid_start_date
   validate :booking_time
-  validate :check_the_possibility_to_book, on: :create
+  validate :check_the_possibility_to_book
   validate :working_hours
 
   before_validation :set_end_date, on: :create

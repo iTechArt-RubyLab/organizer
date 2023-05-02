@@ -1,6 +1,9 @@
 class Service < ApplicationRecord
   belongs_to :company
-  has_many :bookings, dependent: :destroy
+  has_many :bookings
+  enum :status, { active: 0, archived: 1 }
+
+
 
   validates :name, presence: true, length: { maximum: 100 }
   validates :description, presence: true, length: { maximum: 500 }
