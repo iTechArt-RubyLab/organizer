@@ -6,9 +6,11 @@ class User < ApplicationRecord
          :confirmable,
          :omniauthable, omniauth_providers: [:google_oauth2]
 
+  has_one_attached :avatar
   enum :role, { user: 0, admin: 1 }
 
   has_many :bookings
+  before_update :set_avatar_url
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -32,4 +34,11 @@ class User < ApplicationRecord
   def inactive_message
     !deleted_at ? super : :deleted_account
   end
+
+  private
+
+  def set_avatar_url
+    avatar_url = avatar&.url&.split('?')&.first
+  end
+
 end
