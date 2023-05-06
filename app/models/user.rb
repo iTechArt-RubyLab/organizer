@@ -10,7 +10,6 @@ class User < ApplicationRecord
   enum :role, { user: 0, admin: 1 }
 
   has_many :bookings
-  before_update :set_avatar_url
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -36,9 +35,5 @@ class User < ApplicationRecord
   end
 
   private
-
-  def set_avatar_url
-    avatar_url = avatar&.url&.split('?')&.first
-  end
 
 end

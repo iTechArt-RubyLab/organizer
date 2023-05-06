@@ -9,12 +9,4 @@ class Service < ApplicationRecord
   validates :duration, presence: true, numericality: { greater_than: 0, only_integer: true }
   validates :price, presence: true, numericality: { greater_than: 0 }
 
-  before_save :set_image_url
-
-  private
-
-  def set_image_url
-    self.image_url = image&.url&.split('?')&.first
-  end
-
 end
