@@ -1,26 +1,26 @@
 class BookingPolicy < ApplicationPolicy
 
   def index?
-    true
+    user.admin? || user.user?
   end
 
   def show?
-    true
+    user.admin? || user.user?
   end
 
   def new?
-    true
+    user.admin? || user.user?
   end
 
   def create?
-    true
+    user.admin? || user.user?
   end
 
   def edit?
-    true
+    user.admin? || user.user?
   end
 
   def update?
-    true
+    user.admin? || user.user?
   end
 end
