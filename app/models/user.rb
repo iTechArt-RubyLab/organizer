@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :confirmable,
          :omniauthable, omniauth_providers: [:google_oauth2]
 
+  has_one_attached :avatar
   enum :role, { user: 0, admin: 1 }
 
   has_many :bookings
@@ -32,4 +33,7 @@ class User < ApplicationRecord
   def inactive_message
     !deleted_at ? super : :deleted_account
   end
+
+  private
+
 end
