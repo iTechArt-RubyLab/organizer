@@ -1,3 +1,6 @@
+<% if @service.image.attached? %>
+  <%= image_tag(@service.image) %>
+<% end %>
 <%= @service.name %>
 <%= @service.duration %>
 <%= @service.price %>
