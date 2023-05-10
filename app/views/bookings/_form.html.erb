@@ -1,8 +1,24 @@
-<%= simple_form_for @booking  do |booking_form| %>
-  <div class="form-group text-center">
-    <%= booking_form.association :service %>
-    <%= booking_form.input :start_at, start_year: 2023, minute_step: 15, start_hour: 0, end_hour: 23 %><br>
-    <%= booking_form.input :end_at, start_year: 2023, minute_step: 15, start_hour: 0, end_hour: 23 %>
-    <%= booking_form.button :submit %>
+<div class="row">
+  <div class="col">
+    <%= simple_form_for @booking  do |booking_form| %>
+    <div class="form-outline">
+      <%= booking_form.association :service %>
+    </div>
   </div>
+</div>
+<div class="row">
+  <div class="col">
+    <div class="form-outline">
+      <%= booking_form.input :start_at, start_year: 2023, minute_step: 15, start_hour: 0, end_hour: 23 %><br>
+    </div>
+  </div>
+  <div class="col">
+    <div class="form-outline">
+      <%= booking_form.input :end_at, start_year: 2023, minute_step: 15, start_hour: 0, end_hour: 23 %>
+    </div>
+  </div>
+</div>
+<div class="text-center">
+  <%= booking_form.button :submit, class: 'btn btn-lg btn-warning btn-block'  %>
+</div>
 <% end %>

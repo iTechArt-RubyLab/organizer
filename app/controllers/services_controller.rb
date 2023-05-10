@@ -5,7 +5,7 @@ class ServicesController < ApplicationController
   before_action :authorize_service
 
   def index
-    @services = @company.services.all
+    @pagy, @services = pagy((@company.services.all), items: 1)
   end
 
   def show; end

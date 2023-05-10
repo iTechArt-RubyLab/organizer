@@ -364,6 +364,7 @@ DEPENDENCIES
   jquery-rails
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
+  pagy
   pg (~> 1.1)
   phonelib (~> 0.7.3)
   puma (~> 5.0)

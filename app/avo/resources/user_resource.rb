@@ -9,6 +9,7 @@ class UserResource < Avo::BaseResource
   # Fields generated from the model
   field :email, as: :text
   field :name, as: :text
+  field :phone, as: :text
   field :provider, as: :text
   field :uid, as: :text
   field :avatar_url, as: :text

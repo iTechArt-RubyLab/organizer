@@ -4,7 +4,7 @@ class BookingsController < ApplicationController
   before_action :authorize_booking
 
   def index
-    @bookings = current_user.bookings.all
+    @pagy, @bookings = pagy(current_user.bookings.all)
   end
 
   def show; end
