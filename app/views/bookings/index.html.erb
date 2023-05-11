@@ -1,31 +1,82 @@
-<h1>Bookings</h1>
-
-<table>
-  <thread>
-    <tr>
-      <th>Name</th>
-      <th>User</th>
-      <th>Start at</th>
-      <th>End at</th>
-      <th>Duration(min.)</th>
-      <th>Price</th>
-      <th colspan="2"></th>
-    </tr>
-  </thread>
-
+<div class="text-center">
+  <h1>My Bookings</h1>
+</div>
+<table class="table align-middle mb-0 bg-white">
+  <thead class="bg-warning">
+  <tr>
+    <th>User</th>
+    <th>Service</th>
+    <th>Start at</th>
+    <th>End at</th>
+    <th>Duration</th>
+    <th>Price</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
   <tbody>
   <% @bookings.each do |booking| %>
-    <tr>
-      <td><%= booking.service.name %></td>
-      <td><%= booking.user.try(:name) %></td>
-      <td><%= booking.start_at %></td>
-      <td><%= booking.end_at %></td>
-      <td><%= booking.total_duration %></td>
-      <td><%= booking.total_price %></td>
-      <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
-    </tr>
+  <tr>
+    <td>
+      <div class="d-flex align-items-center">
+        <img
+          src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+          alt=""
+          style="width: 45px; height: 45px"
+          class="rounded-circle"
+          />
+        <div class="ms-3">
+          <p class="fw-bold mb-1">
+            <%= booking.user.name %>
+          </p>
+          <p class="text-muted mb-0">
+            <%= booking.user.email %>
+          </p>
+        </div>
+      </div>
+    </td>
+    <td>
+      <p class="fw-normal mb-1">
+      <%= booking.service.name %>
+    </p>
+    </td>
+    <td>
+      <p class="fw-normal mb-1">
+        <%= booking.start_at %>
+      </p>
+    </td>
+    <td>
+      <p class="fw-normal mb-1">
+        <%= booking.end_at %>
+      </p>
+    </td>
+    <td>
+      <p class="fw-normal mb-1">
+        <%= booking.total_duration %>
+      </p>
+    </td>
+    <td>
+      <p class="fw-normal mb-1">
+        <%= booking.total_price %>
+      </p>
+    </td>
+    <td>
+      <%= link_to 'Edit', edit_booking_path(booking),class: "btn btn-link btn-sm btn-rounded" %>
+    </td>
+  </tr>
   <% end %>
   </tbody>
 </table>
+<div>
+  <nav class="pagination-outer" aria-label="Page navigation">
+    <ul class="pagination mt-5 pt-5">
+      <li>
+        <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
+      </li>
+    </ul>
+  </nav>
+</div>
+<div class="text-center">
+<%= link_to 'New Booking', new_booking_path, class: 'btn btn-lg btn-success btn-block m-2' %>
+</div>
 
-<%= link_to 'New Booking', new_booking_path %>
+<%= link_to 'Back', :back, class: 'btn btn-dark btn-block m-2' %>

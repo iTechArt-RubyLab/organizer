@@ -37,7 +37,7 @@ Service.create!([{
                    quantity: 1
                  },
                  {
-                   name: 'Message chair',
+                   name: 'Massage chair',
                    description: 'A place in our club where you can just relax.',
                    duration: 15,
                    price: 5,

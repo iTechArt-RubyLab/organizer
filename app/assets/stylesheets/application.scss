@@ -1,1 +1,85 @@
 @import "bootstrap";
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+.login > .card {
+  width: 100%;
+  max-width: 330px;
+  margin-top: 0 auth;
+  float: none;
+  margin-bottom: 10px;
+}
+.pagination-outer{ text-align: center; }
+.pagination{
+  font-family: 'Ubuntu', sans-serif;
+  display: inline-flex;
+  position: relative;
+}
+.pagination li a.page-link{
+  color: #EAB543;
+  background-color: #222;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 41px;
+  height: 42px;
+  width: 42px;
+  padding: 0;
+  margin: 0 5px;
+  border: none;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease 0s;
+}
+.pagination li a.page-link:hover,
+.pagination li a.page-link:focus,
+.pagination li.active a.page-link:hover,
+.pagination li.active a.page-link{
+  color: #222;
+  background: transparent;
+  box-shadow: 0 0 10px #EAB543;
+}
+.pagination li a.page-link:before{
+  content: '';
+  height: 100%;
+  width: 100%;
+  border: 5px solid #EAB543;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-radius: 50%;
+  opacity: 0;
+  transform: rotate(155deg);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  transition: all 0.3s ease 0s;
+}
+.pagination li a.page-link:hover:before,
+.pagination li a.page-link:focus:before,
+.pagination li.active a.page-link:before{
+  opacity: 1;
+  transform: rotate(-15deg);
+}
+@media only screen and (max-width: 480px){
+  .pagination{
+    font-size: 0;
+    border: none;
+    display: inline-block;
+  }
+  .pagination li{
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 0 10px;
+  }
+}
+
+.bg-image {
+  background-image: url("main.jpg");
+  background-size: cover;
+}
