@@ -1,4 +1,4 @@
-<h1>Services</h1>
+<h1><%= t('main.services') %></h1>
 
 <table>
   <thread>
@@ -18,7 +18,7 @@
         <td><%= service.description %></td>
         <td><%= service.duration %></td>
         <td><%= service.price %></td>
-        <td><%= link_to "Book time", new_booking_path %></td>
+        <td><%= link_to t('main.book'), new_booking_path %></td>
         <% if user_signed_in? && current_user.admin? %>
           <td><%= link_to 'Edit', edit_company_service_path(@company, service) %></td>
           <%= link_to 'New Service', new_company_service_path(@company) %>

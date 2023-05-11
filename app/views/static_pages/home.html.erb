@@ -1,12 +1,12 @@
 <div class="bg-image text-secondary px-4 py-5 text-center m-1 shadow-lg p-3 mb-5 bg-white rounded">
   <div class="py-5">
-    <h1 class="display-5 fw-light text-warning">Welcome to the billiard club "Legenda"</h1>
+    <h1 class="display-5 fw-light text-warning"><%= t('main.welcome') %></h1>
     <div class="col-lg-6 mx-auto">
-      <p class="text-light fst-italic fw-lighter fs-5 mb-4">A legendary place in the world of billiards.</p>
+      <p class="text-light fst-italic fw-lighter fs-5 mb-4"><%= t('main.quote') %></p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <%= link_to "Our Services", company_services_path(@company), class: "btn btn-outline-warning btn-lg px-4 me-sm-3 fw-bold" %>
+        <%= link_to t('main.services'), company_services_path(@company), class: "btn btn-outline-warning btn-lg px-4 me-sm-3 fw-bold" %>
         <% if user_signed_in? %>
-          <%= link_to "Book time", new_booking_path, class: "btn btn-outline-light btn-lg px-4" %>
+          <%= link_to t('main.book'), new_booking_path, class: "btn btn-outline-light btn-lg px-4" %>
         <% end %>
       </div>
     </div>
