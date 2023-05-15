@@ -17,28 +17,21 @@
           </li>
         <% end %>
         <li class="nav-item">
-          <a class="nav-link text-light" href="#"><%= t('global.about') %></a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
+          <%= link_to t('global.about'), company_path(@company), class:'nav-link active text-light' %>
         </li>
       </ul>
-      <% if user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to t('global.account'), edit_user_registration_path, class:'nav-link active text-light' %>
-        </li>
-      <% end %>
+      <div class="mx-auto nav navbar-nav">
+        <% if user_signed_in? %>
+          <% if current_user.avatar.attached?  %>
+            <li class="nav-item my-2 px-1">
+              <%= image_tag current_user.avatar, class:"rounded-circle border border-warning", style:"width: 45px; height: 45px" %>
+            </li>
+          <% end %>
+          <li class="nav-item my-2 p-1">
+            <%= link_to t('global.account'), edit_user_registration_path, class:'nav-link active text-light' %>
+          </li>
+        <% end %>
+      </div>
       <form class="d-flex" role="search">
         <input class="form-control me-2 mx-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit"><%= t('global.search') %></button>

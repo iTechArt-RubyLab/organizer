@@ -6,4 +6,7 @@ class Company < ApplicationRecord
   validates :phone, phone: true
   validates :description, presence: true, length: { maximum: 500 }
 
+  geocoded_by :address
+  after_validation :geocode
+
 end

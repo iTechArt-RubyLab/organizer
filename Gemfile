@@ -67,6 +67,8 @@ gem 'pundit'
 gem 'avo'
 gem 'pagy'
 gem 'rails-i18n', '~> 7.0.0'
+gem 'geocoder'
+gem 'mapkick-rb'
 
 gem 'aws-sdk-s3'
 

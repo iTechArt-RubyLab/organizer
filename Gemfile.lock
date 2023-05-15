@@ -148,6 +148,7 @@ GEM
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
     ffi (1.15.5)
+    geocoder (1.8.1)
     globalid (1.1.0)
       activesupport (>= 5.0)
     hashie (5.0.0)
@@ -183,6 +184,7 @@ GEM
       net-imap
       net-pop
       net-smtp
+    mapkick-rb (0.1.4)
     marcel (1.0.2)
     matrix (0.4.2)
     meta-tags (2.18.0)
@@ -383,9 +385,11 @@ DEPENDENCIES
   debug
   devise
   dotenv-rails (~> 2.8, >= 2.8.1)
+  geocoder
   importmap-rails
   jbuilder
   jquery-rails
+  mapkick-rb
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
   pagy
