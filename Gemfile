@@ -66,6 +66,7 @@ gem 'omniauth-rails_csrf_protection'
 gem 'pundit'
 gem 'avo'
 gem 'pagy'
+gem 'rails-i18n', '~> 7.0.0'
 
 gem 'aws-sdk-s3'
 
