@@ -4,9 +4,9 @@ en:
     signup: "Sign up"
     logout: "Log out"
     home: "Home"
-    bookings: "My bookings"
-    about: "About club"
-    account: "My account"
+    bookings: "My Bookings"
+    about: "About Club"
+    account: "My Account"
     search: "Search"
   main:
     welcome: "Welcome to the billiard club 'Legenda'"

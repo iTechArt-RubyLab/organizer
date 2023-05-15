@@ -79,7 +79,11 @@
   }
 }
 
-.bg-image {
+.bg-home-image {
   background-image: url("main.jpg");
   background-size: cover;
+}
+
+.bg-custom-color {
+  background-color: #fffcca;
 }

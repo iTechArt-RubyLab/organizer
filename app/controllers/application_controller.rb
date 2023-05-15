@@ -3,13 +3,16 @@ class ApplicationController < ActionController::Base
   include Pagy::Backend
   protect_from_forgery with: :exception
 
-  before_action :set_locale
+  before_action :set_locale, :set_company_id
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   private
 
+  def set_company_id
+    @company = Company.find_by(name: 'Legenda')
+  end
   def user_not_authorized
     flash[:alert] = 'You not authorized to perform this action'
     redirect_to (request.referer || root_path)
