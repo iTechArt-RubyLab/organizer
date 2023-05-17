@@ -1,4 +1,5 @@
 class Booking < ApplicationRecord
+  include GenerateCsvForUser
   scope :reservations_overlap, ->(to, from) { where('start_at <= ? AND end_at >= ?', to, from) }
   scope :with_service, ->(id) { where('service_id = ?', id) }
 

@@ -1,6 +1,7 @@
 <div class="text-center">
   <h1>My Bookings</h1>
 </div>
+<%= link_to "CSV for #{Date.today.strftime("%B")}", bookings_path(format: :csv), class: 'btn btn-lg btn-outline-danger btn-block m-2' %>
 <table class="table align-middle mb-0 bg-white">
   <thead class="bg-warning">
   <tr>
@@ -18,8 +19,10 @@
   <tr>
     <td>
       <div class="d-flex align-items-center">
+        <% if current_user.avatar.attached? %>
           <%= image_tag current_user.avatar, class:"rounded-circle", style:"width: 45px; height: 45px" %>
-        <div class="ms-3">
+        <% end %>
+          <div class="ms-3">
           <p class="fw-bold mb-1">
             <%= booking.user.name %>
           </p>

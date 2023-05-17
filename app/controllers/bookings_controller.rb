@@ -5,6 +5,11 @@ class BookingsController < ApplicationController
 
   def index
     @pagy, @bookings = pagy(current_user.bookings.all)
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @bookings.as_csv }
+    end
   end
 
   def show; end
