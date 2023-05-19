@@ -2,9 +2,9 @@
   <h1><%= t('global.bookings') %></h1>
 </div>
 <% if current_user.admin? %>
-  <%= link_to t('data.monthly'), "/admin/export.csv", class: 'btn btn-lg btn-outline-danger btn-block m-2' %>
+  <%= link_to t('data.monthly'), admin_export_bookings_path(format: :csv), class: 'btn btn-lg btn-outline-danger btn-block m-2' %>
 <% end %>
-<%= link_to "CSV for #{Date.today.strftime("%B")}", "/user/export.csv", class: 'btn btn-lg btn-outline-danger btn-block m-2' %>
+<%= link_to "CSV for #{Date.today.strftime("%B")}", user_export_bookings_path(format: :csv), class: 'btn btn-lg btn-outline-danger btn-block m-2' %>
 <table class="table align-middle mb-0 bg-white">
   <thead class="bg-warning">
   <tr>
