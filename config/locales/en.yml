@@ -22,5 +22,15 @@ en:
     update: "Update"
     curpass: "Current password"
     newbook: "New Booking"
+    monthly: "Monthly Report"
+    user: "User"
+    service: "Service"
+    start_at: "Start at"
+    end_at: "End at"
+    duration: "Duration"
+    price: "Price"
+    action: "Actions"
+    edit: "Edit"
+    back: "Back"
 
 

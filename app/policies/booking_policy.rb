@@ -23,4 +23,12 @@ class BookingPolicy < ApplicationPolicy
   def update?
     user.admin? || user.user?
   end
+
+  def admin_export?
+    user.admin?
+  end
+
+  def user_export?
+    user.user? || user.admin?
+  end
 end

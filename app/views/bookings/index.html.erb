@@ -1,16 +1,20 @@
 <div class="text-center">
-  <h1>My Bookings</h1>
+  <h1><%= t('global.bookings') %></h1>
 </div>
+<% if current_user.admin? %>
+  <%= link_to t('data.monthly'), admin_export_bookings_path(format: :csv), class: 'btn btn-lg btn-outline-danger btn-block m-2' %>
+<% end %>
+<%= link_to "CSV for #{Date.today.strftime("%B")}", user_export_bookings_path(format: :csv), class: 'btn btn-lg btn-outline-danger btn-block m-2' %>
 <table class="table align-middle mb-0 bg-white">
   <thead class="bg-warning">
   <tr>
-    <th>User</th>
-    <th>Service</th>
-    <th>Start at</th>
-    <th>End at</th>
-    <th>Duration</th>
-    <th>Price</th>
-    <th>Actions</th>
+    <th><%= t('data.user') %></th>
+    <th><%= t('data.service') %></th>
+    <th><%= t('data.start_at') %></th>
+    <th><%= t('data.end_at') %></th>
+    <th><%= t('data.duration') %></th>
+    <th><%= t('data.price') %></th>
+    <th><%= t('data.action') %></th>
   </tr>
   </thead>
   <tbody>
@@ -18,8 +22,10 @@
   <tr>
     <td>
       <div class="d-flex align-items-center">
+        <% if current_user.avatar.attached? %>
           <%= image_tag current_user.avatar, class:"rounded-circle", style:"width: 45px; height: 45px" %>
-        <div class="ms-3">
+        <% end %>
+          <div class="ms-3">
           <p class="fw-bold mb-1">
             <%= booking.user.name %>
           </p>
@@ -55,7 +61,7 @@
       </p>
     </td>
     <td>
-      <%= link_to 'Edit', edit_booking_path(booking),class: "btn btn-link btn-sm btn-rounded" %>
+      <%= link_to t('data.edit'), edit_booking_path(booking),class: "btn btn-link btn-sm btn-rounded" %>
     </td>
   </tr>
   <% end %>
@@ -71,7 +77,7 @@
   </nav>
 </div>
 <div class="text-center">
-<%= link_to 'New Booking', new_booking_path, class: 'btn btn-lg btn-success btn-block m-2' %>
+<%= link_to t('main.book'), new_booking_path, class: 'btn btn-lg btn-success btn-block m-2' %>
 </div>
 
-<%= link_to 'Back', :back, class: 'btn btn-dark btn-block m-2' %>
+<%= link_to t('data.back'), :back, class: 'btn btn-dark btn-block m-2' %>

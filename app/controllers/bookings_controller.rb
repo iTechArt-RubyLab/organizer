@@ -5,6 +5,7 @@ class BookingsController < ApplicationController
 
   def index
     @pagy, @bookings = pagy(current_user.bookings.all)
+
   end
 
   def show; end
@@ -29,6 +30,27 @@ class BookingsController < ApplicationController
       redirect_to booking_path(@booking)
     else
       render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def user_export
+    @bookings = current_user.bookings.this_month
+    respond_to do |format|
+      format.csv do
+        response.headers['Content-Type'] = 'text/csv'
+        response.headers['Content-Disposition'] = "attachment; filename=#{DateTime.now}_bookings.csv"
+      end
+    end
+  end
+
+  def admin_export
+    admin_id = User.where(role: 'admin')
+    @bookings = Booking.where.not(user_id: admin_id).this_month
+    respond_to do |format|
+      format.csv do
+        response.headers['Content-Type'] = 'text/csv'
+        response.headers['Content-Disposition'] = "attachment; filename=#{DateTime.now}_report_services.csv"
+      end
     end
   end
 

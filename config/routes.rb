@@ -19,7 +19,12 @@ Rails.application.routes.draw do
       resources :services
     end
 
-    resources :bookings
+    resources :bookings do
+      collection do
+        get 'admin_export'
+        get 'user_export'
+      end
+    end
 
     mount Sidekiq::Web => '/sidekiq'
   end

@@ -1,0 +1,5 @@
+<% headers = ['Service', 'Start at', 'End at', 'Duration', 'Price'] %>
+<%= CSV.generate_line headers %>
+  <% @bookings.each do |booking| %>
+  <%= CSV.generate_line([booking.service.name, booking.start_at, booking.end_at, booking.total_duration, booking.total_price]) %>
+<% end %>
