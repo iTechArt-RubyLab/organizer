@@ -1,5 +1,5 @@
 <div class="text-center m-2 p-2">
-  <h1>Search result</h1>
+  <h1><%= t('data.searchres') %></h1>
 </div>
 <div class="bg-custom-color m-2 p-2">
   <% if !@services.empty? %>
@@ -16,6 +16,6 @@
       </ul>
     <% end %>
   <% else %>
-    <p class="fst-italic fs-4">Your search did not match any services.</p>
+    <p class="fst-italic fs-4"><%= t('data.searchmes') %></p>
   <% end %>
 </div>
