@@ -16,10 +16,12 @@ Rails.application.routes.draw do
     }, skip: :omniauth_callbacks
 
     resources :companies, only: %i[show edit update] do
-      resources :services
+      resources :services do
+        collection do
+          get 'search', to: 'search#search'
+        end
+      end
     end
-
-    get 'search', to: 'search#search'
 
     resources :bookings do
       collection do
