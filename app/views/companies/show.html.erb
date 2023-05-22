@@ -1,31 +1,16 @@
-<div class="text-center m-2 p-2">
-  <h1>About club</h1>
-  <p class="m-3 fst-italic fs-5">Our club has 13 tables: 8 tables for Russian billiards and 5 tables for American pool.</p>
-<%= image_tag 'main2.jpg', style: 'height: 250px; width: auto;' %>
-  <%= image_tag 'about-table.jpg', style: 'height: 250px; width: auto;' %>
-  <%= image_tag 'main.jpg', style: 'height: 250px; width: auto;' %>
-  <br>
-  <p class="m-3 fst-italic fs-5">There is a TV-zone with a projector for watching sports matches in the billiard room.</p>
-  <%= image_tag 'about-tv.jpg', style: 'height: 350px; width: auto;' %>
-  <%= image_tag 'about-tv-2.jpg', style: 'height: 350px; width: 550px;' %>
-  <br>
-  <h2 class="m-3">Contacts:</h2>
+<div class="bg-custom-color text-center m-2 p-2">
+  <h2 class="m-3"> <%= @company.name %></h2>
   <div class="row">
-    <div class="col-md-6">
-      <%= js_map [{latitude: @company.latitude, longitude: @company.longitude,
-                   label: @company.name, tooltip: @company.address}],
-                 width: "800px", height: "500px",
-                 controls: true,
-                 tooltips: {hover: false, html: true} %>
+    <div class="col-md-6 p-2">
+      <%= render 'shared/map' %>
     </div>
     <div class="col-md-6">
-      <p class="fs-2">Billiard club <%= @company.name %></p>
+      <p class="fs-4"><%= @company.description %></p>
       <p class="fst-italic fs-4"><%= @company.address %></p>
       <p class="fs-4">Phone: <%= @company.phone %></p>
-      <p class="fs-5">We are working from 16:00 to 02:00 without lunch and weekends.</p>
     </div>
   </div>
   <% if user_signed_in? && current_user.admin? %>
-    <%= link_to "Edit", edit_company_path(@company), class: "btn btn-outline-warning btn-lg px-4 m-3 me-sm-3 fw-bold" %>
+    <%= link_to 'Edit', edit_company_path(@company), class: "btn btn-outline-warning btn-lg px-4 m-3 me-sm-3 fw-bold" %>
   <% end %>
 </div>

@@ -338,6 +338,8 @@ GEM
       connection_pool (>= 2.3.0)
       rack (>= 2.2.4)
       redis-client (>= 0.14.0)
+    simple_calendar (2.4.3)
+      rails (>= 3.0)
     simple_form (5.2.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -419,6 +421,7 @@ DEPENDENCIES
   rubocop-rails
   selenium-webdriver
   sidekiq
+  simple_calendar (~> 2.4)
   simple_form
   sprockets-rails
   stimulus-rails

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     end
 
     root 'static_pages#home'
+    get 'about', to: 'static_pages#about'
 
     devise_for :users, controllers: {
       registrations: 'users/registrations'
