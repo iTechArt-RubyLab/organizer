@@ -19,6 +19,8 @@ Rails.application.routes.draw do
       resources :services
     end
 
+    get 'search', to: 'search#search'
+
     resources :bookings do
       collection do
         get 'admin_export'

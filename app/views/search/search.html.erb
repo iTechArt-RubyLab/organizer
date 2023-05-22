@@ -1,0 +1,21 @@
+<div class="text-center m-2 p-2">
+  <h1>Search result</h1>
+</div>
+<div class="bg-custom-color m-2 p-2">
+  <% if !@services.empty? %>
+    <% @services.each do |service| %>
+      <ul>
+        <li>
+          <h4>
+            <%= link_to service.name, company_service_path(@company, service.id), class:'link-success'%>
+          </h4>
+          <p class="fst-italic fs-4">
+            <%= service.description %>
+          </p>
+        </li>
+      </ul>
+    <% end %>
+  <% else %>
+    <p class="fst-italic fs-4">Your search did not match any services.</p>
+  <% end %>
+</div>
