@@ -32,5 +32,7 @@ en:
     action: "Actions"
     edit: "Edit"
     back: "Back"
+    searchres: "Search result"
+    searchmes: "Your search did not match any services."
 
 

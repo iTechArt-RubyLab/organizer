@@ -23,4 +23,8 @@ class ServicePolicy < ApplicationPolicy
   def update?
     user.admin?
   end
+
+  def search?
+    true
+  end
 end
