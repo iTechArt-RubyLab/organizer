@@ -20,4 +20,24 @@
    </div>
   </div>
 </div>
-
+<div class="text-center m-2 p-3">
+  <div class="row">
+    <div class="col-md-6">
+      <% user_bookings = current_user.bookings %>
+      <%= month_calendar(attribute: :start_at, events: user_bookings) do |date, bookings| %>
+        <%= date %>
+        <% bookings.each do |booking| %>
+        <div>
+          <%= link_to booking.service.name, booking_path(booking.id), class: 'link-success' %>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <div class="pt-4">
+        <p class="text-danger fs-5">You can find it here!</p>
+        <%= render 'shared/map' %>
+      </div>
+    </div>
+  </div>
+</div>

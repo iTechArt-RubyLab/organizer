@@ -1,5 +1,14 @@
 class StaticPagesController < ApplicationController
+  before_action :set_company
   def home
-    @company = Company.find_by(name: "Legenda")
+  end
+
+  def about
+  end
+
+  private
+
+  def set_company
+    @company = Company.find_by_name('Legenda')
   end
 end

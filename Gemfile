@@ -63,21 +63,24 @@ gem 'devise'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 
-gem 'pundit'
 gem 'avo'
-gem 'pagy'
-gem 'rails-i18n', '~> 7.0.0'
 gem 'geocoder'
 gem 'mapkick-rb'
+gem 'pagy'
+gem 'pundit'
+gem 'rails-i18n', '~> 7.0.0'
 
 gem 'aws-sdk-s3'
 
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 
+gem 'simple_calendar', '~> 2.4'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'rspec-rails', '~> 6.0.0'
 
   # ENV
   gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
@@ -99,5 +102,6 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'simplecov', require: false
   gem 'webdrivers'
 end
