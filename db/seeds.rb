@@ -52,4 +52,5 @@ Service.create!([{
                    company_id: company.id,
                    quantity: 1
                  }])
-
+Service.__elasticsearch__.create_index!
+Service.import

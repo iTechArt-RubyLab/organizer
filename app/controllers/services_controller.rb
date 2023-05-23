@@ -33,6 +33,14 @@ class ServicesController < ApplicationController
     end
   end
 
+  def search
+    @services = if params[:term].nil?
+                  []
+                else
+                  @company.services.search params[:term]
+                end
+  end
+
   private
 
   def service_params

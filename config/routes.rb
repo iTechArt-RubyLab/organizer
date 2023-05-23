@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :companies, only: %i[show edit update] do
       resources :services do
         collection do
-          get 'search', to: 'search#search'
+          get 'search'
         end
       end
     end
