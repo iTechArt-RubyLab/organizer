@@ -1,11 +1,9 @@
-require 'elasticsearch/model'
-
 class Service < ApplicationRecord
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
+  searchkick
 
   belongs_to :company
   has_many :bookings
+  belongs_to :category
   enum :status, { active: 0, archived: 1 }
   has_one_attached :image
 
