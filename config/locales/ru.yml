@@ -34,7 +34,6 @@ ru:
     back: "Назад"
     searchres: "Результаты поиска"
     searchmes: "Ничего не найдено."
-    searchmes: "Your search did not match any services."
     filters: 'Фильтры:'
     category: 'Категория:'
     theprice: 'Цена:'
