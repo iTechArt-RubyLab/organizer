@@ -1,11 +1,11 @@
-class ServicePolicy < ApplicationPolicy
+class CategoryPolicy < ApplicationPolicy
 
   def index?
-    true
+    user.admin?
   end
 
   def show?
-    true
+    user.admin?
   end
 
   def new?
@@ -22,9 +22,5 @@ class ServicePolicy < ApplicationPolicy
 
   def update?
     user.admin?
-  end
-
-  def search?
-    true
   end
 end

@@ -1,5 +1,6 @@
 Service.destroy_all
 Company.destroy_all
+Category.destroy_all
 
 company = Company.create!(
   name: 'Legenda',
@@ -8,6 +9,9 @@ company = Company.create!(
   description: 'Billiard club in Grodno'
 )
 
+category_active = Category.create!(name: 'Active')
+category_relax = Category.create!(name: 'Relax')
+
 Service.create!([{
                    name: 'Pool',
                    description: 'Pool is a classification of cue sports played on a table with six pockets along the
@@ -15,7 +19,8 @@ Service.create!([{
                    duration: 60,
                    price: 11,
                    company_id: company.id,
-                   quantity: 5
+                   quantity: 5,
+                   category_id: category_active.id
                  },
                  {
                    name: 'Russian billiard',
@@ -24,7 +29,8 @@ Service.create!([{
                    duration: 60,
                    price: 11,
                    company_id: company.id,
-                   quantity: 8
+                   quantity: 8,
+                   category_id: category_active.id
                  },
                  {
                    name: 'Table tennis',
@@ -34,7 +40,8 @@ Service.create!([{
                    duration: 60,
                    price: 8,
                    company_id: company.id,
-                   quantity: 1
+                   quantity: 1,
+                   category_id: category_active.id
                  },
                  {
                    name: 'Massage chair',
@@ -42,7 +49,8 @@ Service.create!([{
                    duration: 15,
                    price: 5,
                    company_id: company.id,
-                   quantity: 1
+                   quantity: 1,
+                   category_id: category_relax.id
                  },
                  {
                    name: 'Sport translation',
@@ -50,6 +58,7 @@ Service.create!([{
                    duration: 60,
                    price: 10,
                    company_id: company.id,
-                   quantity: 1
+                   quantity: 1,
+                   category_id: category_relax.id
                  }])
-
+Service.reindex

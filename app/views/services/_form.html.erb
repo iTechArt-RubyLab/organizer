@@ -5,6 +5,7 @@
     <%= service_form.input :duration %>
     <%= service_form.input :price %>
     <%= service_form.association :company %>
+    <%= service_form.association :category %>
     <%= service_form.input :image, as: :file %>
     <%= service_form.button :submit %>
   </div>

@@ -5,7 +5,7 @@ class ServicesController < ApplicationController
   before_action :authorize_service
 
   def index
-    @pagy, @services = pagy((@company.services.where(status: 'active').all), items: 1)
+    @pagy, @services = pagy(@company.services.active, items: 1)
   end
 
   def show; end
@@ -33,10 +33,20 @@ class ServicesController < ApplicationController
     end
   end
 
+  def search
+    search_field = params[:search].present? ? params[:search] : '*'
+    category_id = params[:category].present? ? params[:category].to_i : nil
+    @services = if category_id
+                  Service.search(search_field, where: {category_id: })
+                else
+                  Service.search(search_field)
+                end
+  end
+
   private
 
   def service_params
-    params.require(:service).permit(:name, :description, :duration, :price, :company_id, :image)
+    params.require(:service).permit(:name, :description, :duration, :price, :company_id, :image, :category_id)
   end
 
   def company_find

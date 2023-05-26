@@ -147,11 +147,6 @@ GEM
       elasticsearch-transport (= 7.4.0)
     elasticsearch-api (7.4.0)
       multi_json
-    elasticsearch-model (7.2.1)
-      activesupport (> 3)
-      elasticsearch (~> 7)
-      hashie
-    elasticsearch-rails (7.2.1)
     elasticsearch-transport (7.4.0)
       faraday
       multi_json
@@ -308,10 +303,6 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.2.5)
-    rspec (3.12.0)
-      rspec-core (~> 3.12.0)
-      rspec-expectations (~> 3.12.0)
-      rspec-mocks (~> 3.12.0)
     rspec-core (3.12.2)
       rspec-support (~> 3.12.0)
     rspec-expectations (3.12.3)
@@ -320,6 +311,14 @@ GEM
     rspec-mocks (3.12.5)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
+    rspec-rails (6.0.2)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
+      railties (>= 6.1)
+      rspec-core (~> 3.12)
+      rspec-expectations (~> 3.12)
+      rspec-mocks (~> 3.12)
+      rspec-support (~> 3.12)
     rspec-support (3.12.0)
     rubocop (1.50.2)
       json (~> 2.3)
@@ -348,6 +347,9 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    searchkick (5.2.4)
+      activemodel (>= 5.2)
+      hashie
     selenium-webdriver (4.9.1)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -426,8 +428,7 @@ DEPENDENCIES
   debug
   devise
   dotenv-rails (~> 2.8, >= 2.8.1)
-  elasticsearch-model
-  elasticsearch-rails
+  elasticsearch
   factory_bot_rails
   geocoder
   importmap-rails
@@ -444,8 +445,9 @@ DEPENDENCIES
   rails (~> 7.0.4, >= 7.0.4.3)
   rails-i18n (~> 7.0.0)
   redis (~> 4.0)
-  rspec
+  rspec-rails
   rubocop-rails
+  searchkick
   selenium-webdriver
   sidekiq
   simple_calendar (~> 2.4)

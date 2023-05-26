@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :companies, only: %i[show edit update] do
       resources :services do
         collection do
-          get 'search', to: 'search#search'
+          get 'search'
         end
       end
     end
@@ -30,6 +30,8 @@ Rails.application.routes.draw do
         get 'user_export'
       end
     end
+
+    resources :categories, except: :destroy
 
     mount Sidekiq::Web => '/sidekiq'
   end
