@@ -33,7 +33,4 @@ class User < ApplicationRecord
   def inactive_message
     !deleted_at ? super : :deleted_account
   end
-
-  private
-
 end
