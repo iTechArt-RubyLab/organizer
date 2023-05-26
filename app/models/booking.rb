@@ -19,9 +19,9 @@ class Booking < ApplicationRecord
   validate :check_the_possibility_to_update_book, on: :update
   validate :working_hours
 
-  before_validation :set_end_date, on: :create
+  before_validation :set_end_date, on: %i[create update]
   before_validation :total_duration_set, :total_price_set
-  after_create :booking_notification
+  after_save :booking_notification
 
   def remind_at
     start_at - 1.hour
