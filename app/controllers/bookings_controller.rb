@@ -5,7 +5,6 @@ class BookingsController < ApplicationController
 
   def index
     @pagy, @bookings = pagy(current_user.bookings.all)
-
   end
 
   def show; end
@@ -67,5 +66,4 @@ class BookingsController < ApplicationController
   def authorize_booking
     authorize @booking || Booking
   end
-
 end

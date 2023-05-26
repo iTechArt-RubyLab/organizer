@@ -34,10 +34,10 @@ class ServicesController < ApplicationController
   end
 
   def search
-    search_field = params[:search].present? ? params[:search] : '*'
+    search_field = (params[:search].presence || '*')
     category_id = params[:category].present? ? params[:category].to_i : nil
     @services = if category_id
-                  Service.search(search_field, where: {category_id: })
+                  Service.search(search_field, where: { category_id: })
                 else
                   Service.search(search_field)
                 end

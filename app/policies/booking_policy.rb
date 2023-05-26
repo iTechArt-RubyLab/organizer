@@ -1,5 +1,4 @@
 class BookingPolicy < ApplicationPolicy
-
   def index?
     user.admin? || user.user?
   end

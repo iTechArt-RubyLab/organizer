@@ -83,7 +83,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_26_091617) do
     t.datetime "updated_at", null: false
     t.integer "quantity"
     t.integer "status", default: 0
-    t.bigint "category_id", null: false
+    t.bigint "category_id"
     t.index ["category_id"], name: "index_services_on_category_id"
     t.index ["company_id"], name: "index_services_on_company_id"
   end
