@@ -72,8 +72,8 @@ gem 'rails-i18n', '~> 7.0.0'
 
 gem 'aws-sdk-s3'
 
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
+gem 'elasticsearch'
+gem 'searchkick'
 
 gem 'simple_calendar', '~> 2.4'
 

@@ -18,6 +18,7 @@ class UserResource < Avo::BaseResource
   field :confirmation_sent_at, as: :date_time
   field :deleted_at, as: :date_time
   field :role, as: :select, enum: ::User.roles
+  field :avatar, as: :file, is_image: true
   field :bookings, as: :has_many
   # add fields here
 end

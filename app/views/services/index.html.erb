@@ -1,13 +1,16 @@
 <div class="text-center m-2 p-2">
 <h1><%= t('main.services') %></h1>
 </div>
-<div class="d-flex justify-content-end m-2 p-2">
-<%= simple_form_for :term, url: search_company_services_path(@company), method: :get do |form| %>
-  <p>
-    <%= text_field_tag :term, params[:term], placeholder:"Search", class:"border border-blue-500 rounded p-2" %>
+<div class="d-flex justify-content-end m-2">
+  <%= form_with url: search_company_services_path(@company), method: :get do |form| %>
+    <%= form.label t('data.filters'), class: 'fw-bold px-2'%>
+    <div class="d-inline-block">
+      <%= form.label :category, t('data.category'), class: 'text-success fw-light' %>
+      <%= select_tag :category, options_for_select(Category.all.map{ |category| [category.name, category.id] }.insert(0, nil)), {class: 'form-control form-select py-2'} %>
+    </div>
+    <%= text_field_tag :search, params[:search], placeholder:"Search", class:"border border-blue-500 rounded p-2" %>
     <%= submit_tag t('global.search'), name: nil, class:"btn btn-outline-success" %>
-  </p>
-<% end %>
+  <% end %>
 </div>
 <div class="bg-custom-color text-center m-2 p-2">
   <% @services.each do |service| %>
@@ -20,7 +23,8 @@
       <div class="col-6">
         <p class="fs-2 text-decoration-underline m-2"><%= service.name %></p>
         <p class="fst-italic fs-5 p-2"><%= service.description %></p>
-        <p class="fw-light fs-5 ">The price: <%= service.price %> BYN for <%= service.duration %> minutes of booking.</p>
+        <p class="fs-5 fw-lighter"><%= t('data.category') %> <%= service.category.name %></p>
+        <p class="fw-light fs-5 "><%= t('data.theprice') %> <%= service.price %> BYN for <%= service.duration %> minutes of booking.</p>
         <%= link_to t('main.book'), new_booking_path, class: "btn btn-warning btn-lg px-4 m-3 me-sm-3 fw-bold" %>
         <br>
         <% if user_signed_in? && current_user.admin? %>
