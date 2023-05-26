@@ -31,7 +31,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :categories, except: %i[desroy]
+    resources :categories, except: :destroy
 
     mount Sidekiq::Web => '/sidekiq'
   end
