@@ -7,5 +7,6 @@ FactoryBot.define do
     quantity { 5 }
     status { 0 }
     association :company
+    association :category
   end
 end

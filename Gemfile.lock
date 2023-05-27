@@ -256,6 +256,8 @@ GEM
       nio4r (~> 2.0)
     pundit (2.3.0)
       activesupport (>= 3.0.0)
+    pundit-matchers (2.3.0)
+      rspec-rails (>= 3.0.0)
     racc (1.6.2)
     rack (2.2.7)
     rack-protection (3.0.6)
@@ -442,6 +444,7 @@ DEPENDENCIES
   phonelib (~> 0.7.3)
   puma (~> 5.0)
   pundit
+  pundit-matchers
   rails (~> 7.0.4, >= 7.0.4.3)
   rails-i18n (~> 7.0.0)
   redis (~> 4.0)

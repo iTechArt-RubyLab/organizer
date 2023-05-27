@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :company do
-    sequence(:name) { |i| "Company#{i}" }
+    name { 'Company test' }
     description { 'Test description' }
     address { 'Test address' }
     phone { '+375291234567' }

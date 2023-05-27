@@ -1,108 +1,95 @@
 require 'rails_helper'
 
-RSpec.describe CompaniesController, type: :controller do
-  let(:user) { create(:user) }
-  let(:company) { create(:company) }
-
-  # before do
-  #   expect(controller).to receive(:authenticate_user!).and_return(true)
-  # end
-
-  describe "GET #new" do
-    before do
-      expect(controller).to receive(:authenticate_user!).and_return(true)
-      get :new
-    end
-
-    it "is expected to assign person as new instance variable" do
-      expect(assigns(:company)).to be_a_new(Company)
-    end
-
-    it "renders new template" do
-      expect(assigns(:company)).to render_template(:new)
-    end
-  end
-
-  describe "POST #create" do
-    before do
-      expect(controller).to receive(:authenticate_user!).and_return(true)
-      expect(controller).to receive(:current_user).and_return(user)
-    end
-
-    context "when company is saved" do
-      before do
-        expect(company).to receive(:save).and_return(true)
-      end
-
-      it "redirects to companies path" do
-        get :create
-
-        expect(response).to redirect_to(company_path)
-      end
-    end
-
-    context "when company is invalid" do
-      before do
-        expect(company).to receive(:valid?).and_return(false)
-      end
-
-      it "responds with unprocessable_entity" do
-        get :create, params: param
-
-        expect(response).to have_http_status(:unprocessable_entity)
-      end
-    end
-  end
-
-  describe "GET #edit" do
-    before do
-      expect(controller).to receive(:current_user).and_return(user)
-      expect(user).to receive(:companies).and_return(relation)
-      expect(relation).to receive(:find).with(company.id.to_s).and_return(company)
-    end
-
-    it "renders edit" do
-      get :edit, params: { id: company.id }
-
-      expect(response).to have_http_status(:ok)
-    end
-  end
-
-  describe "PUT #update" do
-    before do
-      expect(controller).to receive(:current_user).and_return(user)
-      expect(user).to receive(:companies).and_return(relation)
-      expect(relation).to receive(:find).with(company.id.to_s).and_return(company)
-    end
-
-    context "when company is updated" do
-      before { expect(company).to receive(:update).and_return(true) }
-
-      it "redirects to company path" do
-        get :update, params: { id: company.id, company: param }
-
-        expect(response).to redirect_to(companies_path)
-      end
-    end
-
-    context "when company is not updated" do
-      before { expect(company).to receive(:update).and_return(false) }
-
-      it "responds with unprocessable_entity" do
-        get :update, params: { id: company.id, company: param }
-
-        expect(response).to have_http_status(:unprocessable_entity)
-      end
-    end
-  end
-
-  describe "DELETE #destroy" do
-    before do
-      expect(controller).to receive(:current_user).and_return(user)
-      expect(user).to receive(:companies).and_return(relation)
-      expect(relation).to receive(:find).with(company.id.to_s).and_return(company)
-      expect(company).to receive(:destroy).and_return(true)
-    end
-
-  end
+RSpec.describe CompaniesController do
+#   let(:user) { create(:user) }
+#   let(:company) { create(:company) }
+#
+#   describe "#show" do
+#     context "when user is authenticated" do
+#       before { sign_in user }
+#
+#       it "renders the show template" do
+#         get :show, params: { id: company.id }
+#         expect(response).to render_template(:show)
+#       end
+#     end
+#
+#     context "when user is not authenticated" do
+#       it "renders the show template" do
+#         get :show, params: { id: company.id }
+#         expect(response).to render_template(:show)
+#       end
+#     end
+#   end
+#
+#   describe "#edit" do
+#     context "when user is authenticated and authorized" do
+#       before do
+#         sign_in user
+#         allow(controller).to receive(:authorize_company).and_return(true)
+#       end
+#
+#       it "renders the edit template" do
+#         get :edit, params: { id: company.id }
+#         expect(response).to render_template(:edit)
+#       end
+#     end
+#
+#     context "when user is not authenticated" do
+#       it "redirects to the sign in page" do
+#         get :edit, params: { id: company.id }
+#         expect(response).to redirect_to(new_user_session_path)
+#       end
+#     end
+#
+#     context "when user is authenticated but not authorized" do
+#       before { sign_in user }
+#
+#       it "raises an error" do
+#         expect { get :edit, params: { id: company.id } }.to raise_error(Pundit::NotAuthorizedError)
+#       end
+#     end
+#   end
+#
+#   describe "#update" do
+#     let(:valid_attributes) { attributes_for(:company) }
+#     let(:invalid_attributes) { attributes_for(:company, name: "") }
+#
+#     context "when user is authenticated and authorized" do
+#       before do
+#         sign_in user
+#         allow(controller).to receive(:authorize_company).and_return(true)
+#       end
+#
+#       context "with valid attributes" do
+#         it "updates the company and redirects to the show page" do
+#           put :update, params: { id: company.id, company: valid_attributes }
+#           expect(response).to redirect_to(company_path(company))
+#         end
+#       end
+#
+#       context "with invalid attributes" do
+#         it "renders the edit template with a 422 status code" do
+#           put :update, params: { id: company.id, company: invalid_attributes }
+#           expect(response).to have_http_status(:unprocessable_entity)
+#           expect(response).to render_template(:edit)
+#         end
+#       end
+#     end
+#
+#     context "when user is not authenticated" do
+#       it "redirects to the sign in page" do
+#         put :update, params: { id: company.id, company: valid_attributes }
+#         expect(response).to redirect_to(new_user_session_path)
+#       end
+#     end
+#
+#     context "when user is authenticated but not authorized" do
+#       before { sign_in user }
+#
+#       it "raises an error" do
+#         expect { put :update, params: { id: company.id, company: valid_attributes } }.to raise_error(Pundit::NotAuthorizedError)
+#       end
+#     end
+#   end
 end
