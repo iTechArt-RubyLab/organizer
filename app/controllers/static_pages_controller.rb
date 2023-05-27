@@ -1,14 +1,12 @@
 class StaticPagesController < ApplicationController
   before_action :set_company
-  def home
-  end
+  def home; end
 
-  def about
-  end
+  def about; end
 
   private
 
   def set_company
-    @company = Company.find_by_name('Legenda')
+    @company = Company.find_by(name: 'Legenda')
   end
 end

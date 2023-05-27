@@ -1,5 +1,4 @@
 class ServicePolicy < ApplicationPolicy
-
   def index?
     true
   end

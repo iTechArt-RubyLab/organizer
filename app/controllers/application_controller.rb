@@ -13,29 +13,32 @@ class ApplicationController < ActionController::Base
   def set_company_id
     @company = Company.find_by(name: 'Legenda')
   end
+
   def user_not_authorized
     flash[:alert] = 'You not authorized to perform this action'
-    redirect_to (request.referer || root_path)
+    redirect_to(request.referer || root_path)
   end
 
   def default_url_options
-    {locale: I18n.locale}
+    { locale: I18n.locale }
   end
-  
+
   def set_locale
     I18n.locale = extract_locale || I18n.default_locale
   end
-  
+
   def extract_locale
     parsed_locale = params[:locale]
     I18n.available_locales.map(&:to_s).include?(parsed_locale) ? parsed_locale.to_sym : nil
   end
-  
+
   protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:name, :email, :password) }
 
-    devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:name, :email, :password, :current_password,:avatar, :phone)}
+    devise_parameter_sanitizer.permit(:account_update) do |u|
+      u.permit(:name, :email, :password, :current_password, :avatar, :phone)
+    end
   end
 end

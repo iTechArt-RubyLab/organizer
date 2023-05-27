@@ -28,3 +28,16 @@ Metrics/PerceivedComplexity:
   Exclude:
     - app/models/booking.rb
 
+Metrics/BlockLength:
+  Exclude:
+    - spec/requests/categories_spec.rb
+    - spec/routing/categories_routing_spec.rb
+
+Rails/FilePath:
+  Enabled: false
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+Rails/SkipsModelValidations:
+  Enabled: false
