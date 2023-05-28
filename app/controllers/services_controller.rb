@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  before_action :authenticate_user!, except: %i[index show]
+  before_action :authenticate_user!, except: %i[index show search]
   before_action :company_find
   before_action :service_find, only: %i[show edit update]
   before_action :authorize_service
@@ -46,7 +46,8 @@ class ServicesController < ApplicationController
   private
 
   def service_params
-    params.require(:service).permit(:name, :description, :duration, :price, :company_id, :image, :category_id)
+    params.require(:service).permit(:name, :description, :duration, :price, :company_id, :image, :category_id,
+                                    :quantity)
   end
 
   def company_find
