@@ -70,6 +70,7 @@ end
 group :development do
   gem 'rubocop-rails', require: false
   gem 'web-console'
+  gem 'bullet'
 end
 
 group :test do

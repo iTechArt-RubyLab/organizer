@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     constraints ->(request) { request.env["warden"].user&.admin? } do
       mount Avo::Engine, at: Avo.configuration.root_path
+      mount Sidekiq::Web => '/sidekiq'
     end
 
     root 'static_pages#home'
@@ -32,7 +33,5 @@ Rails.application.routes.draw do
     end
 
     resources :categories, except: :destroy
-
-    mount Sidekiq::Web => '/sidekiq'
   end
 end
