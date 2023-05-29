@@ -8,8 +8,8 @@
       <%= form.label :category, t('data.category'), class: 'text-success fw-light' %>
       <%= select_tag :category, options_for_select(Category.all.map{ |category| [category.name, category.id] }.insert(0, nil)), {class: 'form-control form-select py-2'} %>
     </div>
-    <%= text_field_tag :search, params[:search], placeholder:"Search", class:"border border-blue-500 rounded p-2" %>
-    <%= submit_tag t('global.search'), name: nil, class:"btn btn-outline-success" %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search", class: "border border-blue-500 rounded p-2" %>
+    <%= submit_tag t('global.search'), name: nil, class: "btn btn-outline-success" %>
   <% end %>
 </div>
 <div class="bg-custom-color text-center m-2 p-2">
