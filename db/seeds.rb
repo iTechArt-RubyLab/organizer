@@ -9,6 +9,15 @@ company = Company.create!(
   description: 'Billiard club in Grodno'
 )
 
+admin = User.create!(
+  email: "#{ENV["ADMIN_EMAIL"]}",
+  name: 'Administrator',
+  password:  "#{ENV["ADMIN_PASSWORD"]}",
+  confirmed_at: DateTime.now,
+  role: 1,
+  phone: '+3751234567'
+)
+
 category_active = Category.create!(name: 'Active')
 category_relax = Category.create!(name: 'Relax')
 
@@ -20,6 +29,8 @@ Service.create!([{
                    price: 11,
                    company_id: company.id,
                    quantity: 5,
+                   opening_time: '16:00',
+                   closing_time: '02:00',
                    category_id: category_active.id
                  },
                  {
@@ -30,6 +41,8 @@ Service.create!([{
                    price: 11,
                    company_id: company.id,
                    quantity: 8,
+                   opening_time: '16:00',
+                   closing_time: '02:00',
                    category_id: category_active.id
                  },
                  {
@@ -41,6 +54,8 @@ Service.create!([{
                    price: 8,
                    company_id: company.id,
                    quantity: 1,
+                   opening_time: '16:00',
+                   closing_time: '02:00',
                    category_id: category_active.id
                  },
                  {
@@ -50,6 +65,8 @@ Service.create!([{
                    price: 5,
                    company_id: company.id,
                    quantity: 1,
+                   opening_time: '16:00',
+                   closing_time: '02:00',
                    category_id: category_relax.id
                  },
                  {
@@ -59,6 +76,8 @@ Service.create!([{
                    price: 10,
                    company_id: company.id,
                    quantity: 1,
+                   opening_time: '16:00',
+                   closing_time: '02:00',
                    category_id: category_relax.id
                  }])
 Service.reindex

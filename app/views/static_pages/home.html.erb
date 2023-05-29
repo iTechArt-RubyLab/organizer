@@ -4,9 +4,9 @@
     <div class="col-lg-6 mx-auto">
       <p class="text-light fst-italic fw-lighter fs-5 mb-4"><%= t('main.quote') %></p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <%= link_to t('main.services'), company_services_path(@company), class: "btn btn-outline-warning btn-lg px-4 me-sm-3 fw-bold" %>
+        <%= link_to t('main.services'), company_services_path(@company), class: "btn btn-dark btn-black border border-warning text-warning btn-lg px-4 me-sm-3" %>
         <% if user_signed_in? %>
-          <%= link_to t('main.book'), new_booking_path, class: "btn btn-outline-light btn-lg px-4" %>
+          <%= link_to t('main.book'), new_booking_path, class: "btn btn-warning border border-dark btn-lg px-4" %>
         <% end %>
       </div>
     </div>

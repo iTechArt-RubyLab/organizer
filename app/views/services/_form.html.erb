@@ -4,6 +4,9 @@
     <%= service_form.input :description %>
     <%= service_form.input :duration %>
     <%= service_form.input :price %>
+    <%= service_form.input :quantity %>
+    <%= service_form.input :opening_time %>
+    <%= service_form.input :closing_time %>
     <%= service_form.association :company %>
     <%= service_form.association :category %>
     <%= service_form.input :image, as: :file %>
