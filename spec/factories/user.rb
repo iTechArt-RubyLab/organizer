@@ -6,5 +6,6 @@ FactoryBot.define do
     password_confirmation { password }
     phone { '+37529123-45-67' }
     role { 0 }
+    confirmed_at { DateTime.now }
   end
 end
