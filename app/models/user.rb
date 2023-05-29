@@ -19,6 +19,8 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
       user.avatar_url = auth.info.image
+      user.skip_confirmation!
+      user.save!
     end
   end
 
