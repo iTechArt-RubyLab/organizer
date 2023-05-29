@@ -3,8 +3,8 @@
   <% @categories.each do |category| %>
     <%= render category %>
     <p>
-      <%= link_to "Show", category %>
+      <%= link_to 'Show', category %>
     </p>
   <% end %>
 </div>
-<%= link_to "New category", new_category_path %>
+<%= link_to 'New category', new_category_path %>

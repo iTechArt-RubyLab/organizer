@@ -33,24 +33,24 @@
         <% if user_signed_in? %>
           <% if current_user.avatar.attached?  %>
             <li class="nav-item my-2 px-1">
-              <%= image_tag current_user.avatar, class:"rounded-circle border border-warning", style:"width: 45px; height: 45px" %>
+              <%= image_tag current_user.avatar, class: 'rounded-circle border border-warning', style:"width: 45px; height: 45px" %>
             </li>
           <% elsif current_user.avatar_url %>
             <li class="nav-item my-2 px-1">
-              <%= image_tag current_user.avatar_url, class:"rounded-circle border border-warning", style:"width: 45px; height: 45px" %>
+              <%= image_tag current_user.avatar_url, class: 'rounded-circle border border-warning', style:"width: 45px; height: 45px" %>
             </li>
           <% end %>
           <li class="nav-item my-2 p-1">
-            <%= link_to t('global.account'), edit_user_registration_path, class:'nav-link link-warning active' %>
+            <%= link_to t('global.account'), edit_user_registration_path, class: 'nav-link link-warning active' %>
           </li>
         <% end %>
       </div>
       <% if user_signed_in? %>
         <%= link_to t('global.logout'), destroy_user_session_path, data: { turbo_method: :delete },
-                    class:'btn btn-outline-light mx-2' %>
+                    class: 'btn btn-outline-light mx-2' %>
       <% else %>
-        <%= link_to t('global.signup'), new_user_registration_path, class:'btn btn-outline-light mx-2' %>
-        <%= link_to t('global.login'), new_user_session_path, class:'btn btn-outline-light' %>
+        <%= link_to t('global.signup'), new_user_registration_path, class: 'btn btn-outline-light mx-2' %>
+        <%= link_to t('global.login'), new_user_session_path, class: 'btn btn-outline-light' %>
       <% end %>
     </div>
   </div>

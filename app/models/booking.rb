@@ -9,7 +9,7 @@ class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :service
 
-  validates :start_at, presence: true
+  validates :start_at, :end_at, presence: true
   validates :service, presence: true
   validate :end_date_after_start_date
   validate :valid_start_date
@@ -79,19 +79,21 @@ class Booking < ApplicationRecord
   end
 
   def working_hours
-    start_day = start_at.beginning_of_day
-    end_day = start_at.end_of_day
-    open_hour = start_day + 16.hours
-    close_hour = start_day + 2.hours
-    unless start_at >= start_day && start_at <= close_hour || start_at >= open_hour && start_at <= end_day
-      errors.add(:start_at, 'We work from 16 pm to 2 am')
+    open_time = start_at.at_beginning_of_day + service.opening_time.to_f.hour
+    close_time = start_at.at_beginning_of_day + service.closing_time.to_f.hour
+    open_unusual = start_at.at_beginning_of_day
+    close_unusual = start_at.at_end_of_day + service.closing_time.to_f.hour
+
+    unless start_at.between?(open_time, close_time) ||
+           start_at.between?(open_time, close_unusual) ||
+           start_at.between?(open_unusual, close_time)
+      errors.add(:start_at, "We work from #{service.opening_time} to #{service.closing_time}")
     end
 
-    unless ((start_at >= start_day && start_at <= close_hour) &&
-           (end_at <= close_hour + 1.second && end_at >= start_day)) ||
-           (start_at >= open_hour && start_at <= end_day) &&
-           (end_at <= end_day + 2.hours + 1.second && end_at >= open_hour)
-      errors.add(:end_at, 'We work from 16 pm to 2 am')
+    unless end_at.between?(open_time, close_time) ||
+           end_at.to_time.between?(open_time, close_unusual) ||
+           end_at.to_time.between?(open_unusual, close_time)
+      errors.add(:end_at, "We work from #{service.opening_time} to #{service.closing_time}")
     end
   end
 end
