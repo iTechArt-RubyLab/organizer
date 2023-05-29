@@ -16,4 +16,3 @@ RSpec.describe UserReminderMailer, type: :mailer do
     end
   end
 end
-

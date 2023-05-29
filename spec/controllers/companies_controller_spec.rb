@@ -54,7 +54,7 @@ RSpec.describe CompaniesController do
         end
       end
 
-      context' "with invalid attributes"' do
+      context ' "with invalid attributes"' do
         it 'renders the edit template with a 422 status code' do
           put :update, params: { id: company.id, company: invalid_attributes }
           expect(response).to have_http_status(:unprocessable_entity)

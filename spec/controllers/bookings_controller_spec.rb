@@ -6,7 +6,7 @@ RSpec.describe BookingsController do
   let(:service) { create(:service, company:) }
   let(:booking) { create(:booking, user:, service:) }
   let(:valid_attributes) { attributes_for(:booking) }
-  let(:invalid_attributes) { attributes_for(:booking, start_at: DateTime.now - 1.hour ) }
+  let(:invalid_attributes) { attributes_for(:booking, start_at: DateTime.now - 1.hour) }
 
   describe 'GET /index' do
     context 'when user is authenticated' do
@@ -18,9 +18,9 @@ RSpec.describe BookingsController do
     end
   end
 
-  describe "GET /new" do
+  describe 'GET /new' do
     before { sign_in user }
-    it "renders a successful response" do
+    it 'renders a successful response' do
       get :new, params: { id: booking.id }
       expect(response).to be_successful
     end
@@ -40,7 +40,7 @@ RSpec.describe BookingsController do
         end
       end
 
-      context' "with invalid attributes"' do
+      context ' "with invalid attributes"' do
         it 'renders the edit template with a 422 status code' do
           put :update, params: { id: booking.id, booking: invalid_attributes }
           expect(response).to have_http_status(:unprocessable_entity)
@@ -55,6 +55,4 @@ RSpec.describe BookingsController do
       end
     end
   end
-
-
 end

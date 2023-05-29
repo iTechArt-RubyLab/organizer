@@ -2,7 +2,11 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe '.from_omniauth' do
-    let(:auth) { OmniAuth::AuthHash.new(provider: 'google_oauth2', uid: '12345', info: { name: 'Test User', email: 'test@example.com', image: 'https://example.com/avatar.png' }) }
+    let(:auth) do
+      OmniAuth::AuthHash.new(provider: 'google_oauth2', uid: '12345',
+                             info: { name: 'Test User', email: 'test@example.com',
+                                     image: 'https://example.com/avatar.png' })
+    end
 
     context 'when user exists' do
       let!(:existing_user) { create(:user, provider: 'google_oauth2', uid: '12345') }

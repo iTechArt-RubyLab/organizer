@@ -33,6 +33,10 @@ Metrics/BlockLength:
   Exclude:
     - spec/requests/categories_spec.rb
     - spec/routing/categories_routing_spec.rb
+    - spec/controllers/bookings_controller_spec.rb
+    - spec/controllers/categories_controller_spec.rb
+    - spec/controllers/companies_controller_spec.rb
+    - spec/models/user_spec.rb
 
 Rails/FilePath:
   Enabled: false

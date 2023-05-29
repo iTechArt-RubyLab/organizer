@@ -24,17 +24,17 @@ RSpec.describe CategoriesController do
     end
   end
 
-  describe "GET /new" do
+  describe 'GET /new' do
     before { sign_in admin }
-    it "renders a successful response" do
+    it 'renders a successful response' do
       get :new, params: { id: category.id }
       expect(response).to be_successful
     end
   end
 
-  describe "GET /edit" do
+  describe 'GET /edit' do
     before { sign_in admin }
-    it "renders a successful response" do
+    it 'renders a successful response' do
       get :edit, params: { id: category.id }
       expect(response).to be_successful
     end
@@ -54,7 +54,7 @@ RSpec.describe CategoriesController do
         end
       end
 
-      context' "with invalid attributes"' do
+      context ' "with invalid attributes"' do
         it 'renders the edit template with a 422 status code' do
           put :update, params: { id: category.id, category: invalid_attributes }
           expect(response).to have_http_status(:unprocessable_entity)
@@ -77,9 +77,9 @@ RSpec.describe CategoriesController do
     end
     context 'with valid parameters' do
       it 'creates a new Category' do
-        expect {
+        expect do
           post :create, params: { category: valid_attributes }
-        }.to change(Category, :count).by(1)
+        end.to change(Category, :count).by(1)
       end
 
       it 'redirects to the created category' do
@@ -90,9 +90,9 @@ RSpec.describe CategoriesController do
 
     context 'with invalid parameters' do
       it 'does not create a new Category' do
-        expect {
+        expect do
           post :create, params: { category: invalid_attributes }
-        }.to change(Category, :count).by(0)
+        end.to change(Category, :count).by(0)
       end
 
       it 'renders a response with 422 status' do
