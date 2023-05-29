@@ -1,0 +1,16 @@
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+  <p class="col-md-4 mb-0 text-body-secondary">© 2023 Github:
+    <%= link_to 'ritamma', 'https://github.com/ritamma', class: 'link-success fw-light' %>
+  </p>
+  <a class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+    <svg class="bi me-2" width="40" height="32">
+      <a class="navbar-brand" href="http://localhost:3000">
+        <%= image_tag 'legenda-logo.png', class: "rounded-circle", width:'40' %>
+      </a>
+    </svg>
+  </a>
+  <ul class="nav col-md-4 justify-content-end">
+    <li class="nav-item"><%= link_to t('global.home'), root_path, class: 'nav-link px-2 text-dark' %></li>
+    <li class="nav-item"><%= link_to t('global.about'), about_path, class: 'nav-link px-2 text-dark' %></li>
+  </ul>
+</footer>
