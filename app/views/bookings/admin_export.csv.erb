@@ -1,0 +1,7 @@
+<% headers = ['Service', 'Count', 'Total Sum'] %>
+<%= CSV.generate_line headers %>
+<% booking = @bookings.arel_table %>
+<% @bookings.group(:service_id).pluck(booking[:service_id], booking[:id].count, booking[:total_price].sum).each do |reservation| %>
+  <% service = Service.find(reservation[0]).name %>
+  <%= CSV.generate_line([service, reservation[1], reservation[2]]) %>
+<% end %>

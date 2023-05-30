@@ -1,0 +1,16 @@
+<div class="bg-custom-color text-center m-2 p-2">
+  <h2 class="m-3"> <%= @company.name %></h2>
+  <div class="row">
+    <div class="col-md-6 p-2">
+      <%= render 'shared/map' %>
+    </div>
+    <div class="col-md-6">
+      <p class="fs-4"><%= @company.description %></p>
+      <p class="fst-italic fs-4"><%= @company.address %></p>
+      <p class="fs-4">Phone: <%= @company.phone %></p>
+    </div>
+  </div>
+  <% if user_signed_in? && current_user.admin? %>
+    <%= link_to 'Edit', edit_company_path(@company), class: "btn btn-outline-warning btn-lg px-4 m-3 me-sm-3 fw-bold" %>
+  <% end %>
+</div>

@@ -1,0 +1,26 @@
+<div class="card shadow-lg mb-5 bg-custom-color rounded">
+  <div class="row">
+    <div class="col">
+      <%= simple_form_for @booking  do |booking_form| %>
+      <div class="form-outline text-card">
+        <%= booking_form.association :service, required: true, label: t('data.service') %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="form-outline text-card">
+        <%= booking_form.input :start_at, label: t('data.start_at'), start_year: 2023, minute_step: 15, start_hour: 0, end_hour: 23 %><br>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-outline text-card">
+        <%= booking_form.input :end_at, label: t('data.end_at'), start_year: 2023, minute_step: 15, start_hour: 0, end_hour: 23 %>
+      </div>
+    </div>
+  </div>
+  <div class="text-center">
+    <%= booking_form.button :submit, t('main.book'), class: 'btn btn-lg btn-success border border-dark btn-block'  %>
+  </div>
+  <% end %>
+</div>

@@ -1,0 +1,43 @@
+<div class="text-center text-card text-main m-2 p-2">
+  <h1><%= @service.name %></h1>
+</div>
+<div class="bg-custom-color text-center rounded border border-dark m-2 p">
+  <div class="row">
+    <div class="col-6 p-2">
+      <% if @service.image.attached? %>
+        <%= image_tag @service.image, style: 'width:600px; height:350px;', class: 'rounded' %>
+      <% end %>
+    </div>
+    <div class="col-6">
+      <p class="fst-italic text-card fs-4 p-4">"<%= @service.description %>"</p>
+      <p class="fw-light fs-4">The price: <%= @service.price %> BYN for <%= @service.duration %> minutes of booking.</p>
+      <%= link_to t('main.book'), new_booking_path, class: "btn btn-warning btn-lg px-4 m-3 me-sm-3 fw-bold" %>
+      <br>
+      <% if user_signed_in? && current_user.admin? %>
+        <td><%= link_to 'Edit', edit_company_service_path(@company, @service), class: "btn btn-success btn-lg px-4 m-3 me-sm-3 fw-bold" %></td>
+        <%= link_to 'New', new_company_service_path(@company), class: "btn btn-success btn-lg px-4 m-3 me-sm-3 fw-bold" %>
+      <% end %>
+   </div>
+  </div>
+</div>
+<div class="d-inline text-center m-2 p-3">
+  <div class="row">
+    <div class="col-md-6">
+      <% if user_signed_in? %>
+        <% user_bookings = current_user.bookings.includes(:service) %>
+        <%= month_calendar(attribute: :start_at, events: user_bookings) do |date, bookings| %>
+          <%= date %>
+          <% bookings.each do |booking| %>
+            <div>
+              <%= link_to booking.service.name, booking_path(booking.id), class: 'link-success' %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+        <p class="text-danger fs-5"><%= t('data.here') %></p>
+        <%= render 'shared/map' %>
+    </div>
+  </div>
+</div>

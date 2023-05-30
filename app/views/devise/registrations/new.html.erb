@@ -1,0 +1,31 @@
+<div class="card-cont bg-custom-color shadow mt-4 rounded">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "form-signin"}) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <h2 class="form-signin-heading text-center"><%= t('global.signup') %></h2>
+    <div class="field text-card">
+      <%= f.label t('data.email') %><br />
+      <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: t('data.email')  %>
+    </div>
+  <div class="field text-card">
+    <%= f.label t('data.name') %><br />
+    <%= f.text_field :name, autocomplete: "off", class: 'form-control', placeholder: t('data.name') %>
+  </div>
+  <div class="field text-card">
+    <%= f.label t('data.password') %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: t('data.password') %>
+  </div>
+    <div class="field text-card">
+    <%= f.label t('data.passwordcon') %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: t('data.passwordcon') %>
+  </div>
+    <div class="actions text-center mt-4">
+      <%= f.submit t('global.signup'), class: 'btn btn-lg btn-success btn-block' %>
+    </div>
+<% end %>
+</div>
+<div class="text-center mt-2">
+  <%= render "devise/shared/links" %>
+</div>

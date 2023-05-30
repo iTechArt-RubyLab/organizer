@@ -14,3 +14,35 @@ Style/FrozenStringLiteralComment:
 
 Metrics/MethodLength:
   Max: 20
+
+Metrics/AbcSize:
+  Exclude:
+    - app/models/booking.rb
+    - app/models/user.rb
+    - app/jobs/booking_notification_job.rb
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - app/models/booking.rb
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - app/models/booking.rb
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/requests/categories_spec.rb
+    - spec/routing/categories_routing_spec.rb
+    - spec/controllers/bookings_controller_spec.rb
+    - spec/controllers/categories_controller_spec.rb
+    - spec/controllers/companies_controller_spec.rb
+    - spec/models/user_spec.rb
+
+Rails/FilePath:
+  Enabled: false
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+Rails/SkipsModelValidations:
+  Enabled: false

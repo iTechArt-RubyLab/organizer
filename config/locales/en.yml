@@ -1,33 +1,46 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   "true": "foo"
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  global:
+    login: "Log in"
+    signup: "Sign up"
+    logout: "Log out"
+    home: "Home"
+    bookings: "My Bookings"
+    about: "About Club"
+    account: "My Account"
+    search: "Search"
+  main:
+    welcome: "Welcome to the billiard club 'Legenda'"
+    quote: "A legendary place in the world of billiards."
+    services: "Our Services"
+    book: "Book Time"
+  data:
+    name: "Name"
+    email: "Email"
+    password: "Password"
+    passwordcon: "Password confirmation"
+    remember: "Remember me"
+    update: "Update"
+    curpass: "Current password"
+    newbook: "New Booking"
+    monthly: "Monthly Report"
+    user: "User"
+    service: "Service"
+    start_at: "Start"
+    end_at: "End"
+    duration: "Duration"
+    price: "Price"
+    action: "Actions"
+    edit: "Edit"
+    back: "Back"
+    searchres: "Search result"
+    searchmes: "Your search did not match any services."
+    filters: 'Filters:'
+    category: 'Category:'
+    theprice: 'The price:'
+    aboutdesc1: 'Our club has 13 tables: 8 tables for Russian billiards and 5 tables for American pool.'
+    aboutdesc2: 'There is a TV-zone with a projector for watching sports matches in the billiard room.'
+    abouthours: 'We are working from 16:00 to 02:00 without lunch and weekends.'
+    aboutcont: 'Contacts:'
+    aboutbil: 'Billiard club'
+    aboutphone: 'Phone:'
+    here: 'You can find it here!'

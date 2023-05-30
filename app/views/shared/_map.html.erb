@@ -1,0 +1,4 @@
+<%= js_map [{latitude: @company.latitude, longitude: @company.longitude,
+             label: @company.name, tooltip: @company.address}],
+             controls: true,
+             tooltips: {hover: false, html: true} %>

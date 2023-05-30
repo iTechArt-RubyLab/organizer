@@ -1,0 +1,19 @@
+<div class="height-500">
+  <div class="bg-home-image text-secondary m-2 px-4 py-5 text-center m-1 shadow-lg p-4 mb-5 bg-white rounded">
+    <div class="py-5">
+      <h1 class="display-5 fw-light text-main text-warning"><%= t('main.welcome') %></h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="text-light fst-italic fw-lighter fs-5 mb-4"><%= t('main.quote') %></p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <%= link_to t('main.services'), company_services_path(@company), class: "btn btn-dark btn-black border border-warning text-warning btn-lg px-4 me-sm-3" %>
+          <% if user_signed_in? %>
+            <%= link_to t('main.book'), new_booking_path, class: "btn btn-warning border border-dark btn-lg px-4" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer pt-3 m-2">
+  <%= render 'shared/footer' %>
+</div>

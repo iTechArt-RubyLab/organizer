@@ -1,0 +1,82 @@
+<div class="text-center pt-2 text-main">
+  <h1><%= t('global.bookings') %></h1>
+</div>
+<% if current_user.admin? %>
+  <%= link_to t('data.monthly'), admin_export_bookings_path(format: :csv), class: 'btn btn-lg btn-outline-danger btn-block m-2' %>
+<% end %>
+<%= link_to "CSV for #{Date.today.strftime("%B")}", user_export_bookings_path(format: :csv), class: 'btn btn-lg btn-outline-danger btn-block m-2' %>
+<table class="table align-middle mb-0 bg-white">
+  <thead class="bg-warning">
+  <tr>
+    <th><%= t('data.user') %></th>
+    <th><%= t('data.service') %></th>
+    <th><%= t('data.start_at') %></th>
+    <th><%= t('data.end_at') %></th>
+    <th><%= t('data.duration') %></th>
+    <th><%= t('data.price') %></th>
+    <th><%= t('data.action') %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @bookings.each do |booking| %>
+  <tr>
+    <td>
+      <div class="d-flex align-items-center">
+        <% if current_user.avatar.attached? %>
+          <%= image_tag current_user.avatar, class: "rounded-circle", style: "width: 45px; height: 45px" %>
+        <% end %>
+          <div class="ms-3">
+          <p class="fw-bold mb-1">
+            <%= booking.user.name %>
+          </p>
+          <p class="text-muted mb-0">
+            <%= booking.user.email %>
+          </p>
+        </div>
+      </div>
+    </td>
+    <td>
+      <p class="fw-normal mb-1">
+      <%= booking.service.name %>
+    </p>
+    </td>
+    <td>
+      <p class="fw-normal mb-1">
+        <%= booking.start_at %>
+      </p>
+    </td>
+    <td>
+      <p class="fw-normal mb-1">
+        <%= booking.end_at %>
+      </p>
+    </td>
+    <td>
+      <p class="fw-normal mb-1">
+        <%= booking.total_duration %>
+      </p>
+    </td>
+    <td>
+      <p class="fw-normal mb-1">
+        <%= booking.total_price %>
+      </p>
+    </td>
+    <td>
+      <%= link_to t('data.edit'), edit_booking_path(booking),class: "btn btn-link btn-sm btn-rounded" %>
+    </td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+<div>
+  <nav class="pagination-outer" aria-label="Page navigation">
+    <ul class="pagination mt-3 pt-3">
+      <li>
+        <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
+      </li>
+    </ul>
+  </nav>
+</div>
+<div class="text-center">
+<%= link_to t('main.book'), new_booking_path, class: 'btn btn-lg btn-success btn-block m-2' %>
+</div>
+<%= link_to t('data.back'), :back, class: 'btn btn-dark btn-block m-2' %>
