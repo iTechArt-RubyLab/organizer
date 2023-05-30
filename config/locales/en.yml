@@ -25,8 +25,8 @@ en:
     monthly: "Monthly Report"
     user: "User"
     service: "Service"
-    start_at: "Start at"
-    end_at: "End at"
+    start_at: "Start"
+    end_at: "End"
     duration: "Duration"
     price: "Price"
     action: "Actions"
@@ -37,5 +37,10 @@ en:
     filters: 'Filters:'
     category: 'Category:'
     theprice: 'The price:'
-
-
+    aboutdesc1: 'Our club has 13 tables: 8 tables for Russian billiards and 5 tables for American pool.'
+    aboutdesc2: 'There is a TV-zone with a projector for watching sports matches in the billiard room.'
+    abouthours: 'We are working from 16:00 to 02:00 without lunch and weekends.'
+    aboutcont: 'Contacts:'
+    aboutbil: 'Billiard club'
+    aboutphone: 'Phone:'
+    here: 'You can find it here!'

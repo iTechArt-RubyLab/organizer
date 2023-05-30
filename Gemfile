@@ -29,8 +29,8 @@ gem 'jbuilder'
 
 gem 'redis', '~> 4.0'
 
-gem 'simple_form'
 gem 'bootsnap', require: false
+gem 'simple_form'
 
 gem 'bootstrap', '~> 5.2.2'
 gem 'jquery-rails'
@@ -68,9 +68,9 @@ group :development, :test do
 end
 
 group :development do
+  gem 'bullet'
   gem 'rubocop-rails', require: false
   gem 'web-console'
-  gem 'bullet'
 end
 
 group :test do

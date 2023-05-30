@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :confirmable,
          :omniauthable, omniauth_providers: [:google_oauth2]
 
-  has_one_attached :avatar
+  has_one_attached :avatar, dependent: :destroy
   enum :role, { user: 0, admin: 1 }
 
   has_many :bookings
