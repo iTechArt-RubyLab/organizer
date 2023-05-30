@@ -5,7 +5,7 @@ class Service < ApplicationRecord
   has_many :bookings
   belongs_to :category
   enum :status, { active: 0, archived: 1 }
-  has_one_attached :image
+  has_one_attached :image, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 100 }
   validates :description, presence: true, length: { maximum: 500 }

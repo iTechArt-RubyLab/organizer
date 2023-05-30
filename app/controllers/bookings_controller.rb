@@ -4,7 +4,8 @@ class BookingsController < ApplicationController
   before_action :authorize_booking
 
   def index
-    @pagy, @bookings = pagy(current_user.bookings.includes(:service))
+    @pagy, @bookings = pagy(current_user.bookings.where('start_at >= ?',
+                                                        DateTime.now.beginning_of_day).includes(:service))
   end
 
   def show; end

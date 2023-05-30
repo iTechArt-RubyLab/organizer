@@ -81,20 +81,42 @@
     margin: 0 0 10px;
   }
 }
-
 .bg-home-image {
   background-image: url("main.jpg");
   background-size: cover;
 }
-
 .bg-custom-color {
   background-color: #fffcca;
 }
-
 .btn-black {
   background-color: black;
 }
-
 .height-500 {
   height: 500px;
+}
+.card {
+  margin: auto;
+  border:solid 1px #daa520;
+  width:90%;
+  padding: 20px!important;
+}
+.text-card {
+  color: #daa520;
+}
+.card-cont {
+  margin: auto;
+  border:solid 1px #daa520;
+  width:40%;
+  padding: 10px!important;
+  color: #006400;
+}
+.text-main {
+  color: #daa520;
+  text-shadow: -1px 1px 0 #000,
+                1px 1px 0 #000,
+                1px -1px 0 #000,
+                -1px -1px 0 #000;
+}
+.text-sh {
+  text-shadow: 0 0 2px #000;
 }
